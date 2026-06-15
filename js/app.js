@@ -42,7 +42,7 @@ async function onQRDetected(trackId) {
         });
     } catch (err) {
         stopCountdown();
-        showError(err.message || 'Could not play this track');
+        showError(err.message || 'Dit liedje kon niet worden afgespeeld.');
         console.error('Playback error:', err);
     }
 }

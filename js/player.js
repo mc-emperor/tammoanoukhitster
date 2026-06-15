@@ -5,7 +5,7 @@ async function playTrack(trackId, durationSeconds, onEnded) {
     const token = await getToken();
 
     const deviceId = await getPhoneDeviceId(token);
-    if (!deviceId) throw new Error('No Spotify device found. Open the Spotify app, play any song briefly, then try again.');
+    if (!deviceId) throw new Error('Geen Spotify-apparaat gevonden. Open de Spotify-app, speel even een liedje af en probeer opnieuw.');
 
     const res = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
         method: 'PUT',
@@ -16,7 +16,7 @@ async function playTrack(trackId, durationSeconds, onEnded) {
         body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
     });
 
-    if (!res.ok && res.status !== 204) throw new Error(`Playback error (${res.status})`);
+    if (!res.ok && res.status !== 204) throw new Error(`Afspelen mislukt (${res.status})`);
 
     scheduleStop(durationSeconds, onEnded);
 }
