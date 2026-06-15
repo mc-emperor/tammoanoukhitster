@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitster</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #121212;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <script src="js/auth.js"></script>
+    <script>
+        (async () => {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+            const error = params.get('error');
+
+            if (error || !code) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                await exchangeCode(code);
+                window.location.href = 'index.html';
+            } catch (e) {
+                console.error('Auth failed', e);
+                window.location.href = 'index.html';
+            }
+        })();
+    </script>
+</body>
+</html>
