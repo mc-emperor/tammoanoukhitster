@@ -40,6 +40,7 @@ async function onQRDetected(trackId) {
     } catch (err) {
         stopCountdown();
         showError(err.message || 'Could not play this track');
+        console.error('Playback error:', err);
     }
 }
 

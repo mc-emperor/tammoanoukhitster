@@ -74,7 +74,10 @@ async function playViaSdk(trackId, token) {
         },
         body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
     });
-    if (!res.ok && res.status !== 204) throw new Error('Playback failed');
+    if (!res.ok && res.status !== 204) {
+        const body = await res.text();
+        throw new Error(`SDK ${res.status}: ${body}`);
+    }
 }
 
 async function playViaPreview(trackId, token) {
