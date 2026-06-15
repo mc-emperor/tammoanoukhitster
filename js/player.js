@@ -3,7 +3,11 @@ let sdkPlayer = null;
 let isPremium = false;
 let activeTimer = null;
 
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
 async function initPlayer() {
+    if (isMobile) return;
+
     await loadSDK();
 
     return new Promise((resolve) => {
