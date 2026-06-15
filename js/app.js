@@ -17,7 +17,6 @@ async function init() {
         const token = await getToken();
         if (!token) { showScreen('login'); return; }
 
-        await initPlayer();
         showScreen('ready');
         updateTimerLabel();
     } catch (err) {
@@ -27,7 +26,6 @@ async function init() {
 }
 
 async function onStart() {
-    await unlockAudio();
     await startScanner(onQRDetected);
     showScreen('scanner');
 }

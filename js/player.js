@@ -1,9 +1,5 @@
 let activeTimer = null;
 
-async function initPlayer() {
-    // Spotify Connect needs no SDK — playback goes through the Spotify app
-}
-
 async function playTrack(trackId, durationSeconds, onEnded) {
     clearTimer();
     const token = await getToken();
@@ -66,6 +62,3 @@ function clearTimer() {
     if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
 }
 
-async function unlockAudio() {
-    // Not needed for Spotify Connect
-}
