@@ -2,7 +2,7 @@ const CLIENT_ID = '830804fd1d884fd980097f01b5eae210';
 const SCOPES = 'streaming user-read-email user-read-private';
 
 function getRedirectUri() {
-    return new URL('callback.html', window.location.href).href.split('?')[0];
+    return 'https://mc-emperor.github.io/tammoanoukhitster/callback.html';
 }
 
 function generateVerifier() {
