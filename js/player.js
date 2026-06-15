@@ -52,7 +52,12 @@ async function playTrack(trackId, durationSeconds, onEnded) {
     const token = await getToken();
 
     if (isPremium && deviceId) {
-        await playViaSdk(trackId, token);
+        try {
+            await playViaSdk(trackId, token);
+        } catch (e) {
+            console.warn('SDK playback failed, falling back to preview', e);
+            await playViaPreview(trackId, token);
+        }
     } else {
         await playViaPreview(trackId, token);
     }
