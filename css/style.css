@@ -1,9 +1,11 @@
 :root {
-    --bg: #121212;
-    --surface: #2a2a2a;
-    --accent: #1DB954;
-    --text: #ffffff;
-    --text-dim: #999;
+    --bg: #FAF7F2;
+    --surface: #F0EBE3;
+    --blue: #4B7EC8;
+    --red: #D95B4A;
+    --text: #2C2825;
+    --text-dim: #9A8F85;
+    --ring-track: #E8E0D5;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,7 +14,7 @@ html, body {
     height: 100%;
     background: var(--bg);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
@@ -26,6 +28,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: var(--bg);
 }
 .screen.active { display: flex; }
 
@@ -33,55 +36,101 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
     padding: 2rem;
     text-align: center;
-}
-
-/* ── Login ── */
-#screen-login { background: var(--bg); }
-
-.logo {
-    font-size: 3.5rem;
-    font-weight: 900;
-    letter-spacing: -2px;
-    color: var(--text);
-}
-
-.tagline {
-    color: var(--text-dim);
-    font-size: 1rem;
-    margin-top: -0.5rem;
-}
-
-.btn-spotify {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: var(--accent);
-    color: #000;
-    border: none;
-    border-radius: 50px;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 1rem;
-    min-height: 56px;
-    min-width: 220px;
+    flex: 1;
     justify-content: center;
 }
 
-.btn-spotify svg { width: 24px; height: 24px; flex-shrink: 0; }
+/* ── Typography ── */
+.kicker {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text);
+    letter-spacing: -0.5px;
+}
+
+.amp {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--red);
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-top: -0.5rem;
+}
+
+.ready-hint {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 240px;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 0.9rem 2rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    min-height: 52px;
+    min-width: 200px;
+    justify-content: center;
+    letter-spacing: 0.01em;
+}
+
+.btn-primary:active { opacity: 0.85; }
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-dim);
+    border: none;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    min-height: 44px;
+}
+
+/* ── Flowers strip ── */
+.flowers-strip {
+    width: 100%;
+    height: 90px;
+    background: url('../assets/flowers.png') center bottom / cover no-repeat;
+    flex-shrink: 0;
+}
 
 /* ── Loading ── */
-#screen-loading { background: var(--bg); }
-
 .spinner {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border: 3px solid var(--surface);
-    border-top-color: var(--accent);
+    border-top-color: var(--blue);
     border-radius: 50%;
     animation: spin 0.7s linear infinite;
 }
@@ -91,7 +140,6 @@ html, body {
 #screen-scanner {
     background: #000;
     padding: 0;
-    justify-content: flex-start;
 }
 
 #scanner-container {
@@ -100,7 +148,6 @@ html, body {
     position: relative;
 }
 
-/* Override html5-qrcode inline styles */
 #scanner-container > div:first-child {
     width: 100% !important;
     height: 100% !important;
@@ -123,16 +170,15 @@ html, body {
     display: flex;
     justify-content: flex-end;
     gap: 0.75rem;
-    pointer-events: none;
 }
 
 .hud-btn {
-    pointer-events: all;
     background: rgba(0, 0, 0, 0.55);
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 50px;
     padding: 0.65rem 1.1rem;
+    font-family: inherit;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
@@ -143,7 +189,7 @@ html, body {
 }
 
 /* ── Playing ── */
-#screen-playing { background: var(--bg); }
+.playing-screen { background: var(--bg); }
 
 .ring-wrapper {
     position: relative;
@@ -164,13 +210,13 @@ html, body {
 
 .ring-bg {
     fill: none;
-    stroke: var(--surface);
+    stroke: var(--ring-track);
     stroke-width: 5;
 }
 
 .ring-fg {
     fill: none;
-    stroke: var(--accent);
+    stroke: var(--blue);
     stroke-width: 5;
     stroke-linecap: round;
     stroke-dasharray: 282.74;
@@ -181,47 +227,39 @@ html, body {
 }
 
 #countdown-text {
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 5rem;
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1;
     z-index: 1;
+    color: var(--text);
     font-variant-numeric: tabular-nums;
 }
 
 .btn-stop {
     background: transparent;
-    color: var(--text);
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    color: var(--text-dim);
+    border: 2px solid var(--ring-track);
     border-radius: 50px;
     padding: 1rem 3.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    min-height: 56px;
-    letter-spacing: 0.05em;
-}
-
-.btn-stop:active { border-color: rgba(255, 255, 255, 0.5); }
-
-/* ── Error ── */
-#screen-error { background: var(--bg); gap: 1rem; }
-
-.error-icon { font-size: 3rem; }
-
-#error-message {
-    color: var(--text-dim);
-    max-width: 260px;
-    line-height: 1.5;
-}
-
-.btn-retry {
-    background: var(--surface);
-    color: var(--text);
-    border: none;
-    border-radius: 50px;
-    padding: 0.85rem 2rem;
+    font-family: inherit;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     min-height: 52px;
+    letter-spacing: 0.05em;
+}
+
+.btn-stop:active { border-color: var(--text-dim); }
+
+/* ── Error ── */
+#screen-error { gap: 1rem; }
+
+.error-icon { font-size: 2.5rem; }
+
+#error-message {
+    color: var(--text-dim);
+    max-width: 260px;
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
