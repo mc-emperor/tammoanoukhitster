@@ -189,7 +189,39 @@ html, body {
 }
 
 /* ── Playing ── */
-.playing-screen { background: var(--bg); }
+.playing-screen {
+    background: var(--bg);
+    justify-content: flex-start;
+}
+
+.playing-top {
+    padding: 1.5rem 2rem 0;
+    width: 100%;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.playing-logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-dim);
+}
+
+.playing-logo em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--red);
+}
+
+.playing-middle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
 
 .ring-wrapper {
     position: relative;
