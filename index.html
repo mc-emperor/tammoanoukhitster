@@ -45,7 +45,10 @@
 
     <!-- Playing -->
     <div id="screen-playing" class="screen">
-        <div class="center-content">
+        <div id="tap-to-start" class="tap-to-start" onclick="onTapToStart()">
+            <div class="tap-hint">Tap to play</div>
+        </div>
+        <div id="playing-controls" class="center-content" style="display:none">
             <div class="ring-wrapper">
                 <svg class="countdown-svg" viewBox="0 0 100 100">
                     <circle class="ring-bg" cx="50" cy="50" r="45"/>
