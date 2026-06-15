@@ -195,7 +195,7 @@ html, body {
 }
 
 .playing-top {
-    padding: 1.5rem 2rem 0;
+    padding: 2rem 2rem 0;
     width: 100%;
     text-align: center;
     flex-shrink: 0;
@@ -217,10 +217,15 @@ html, body {
 .playing-middle {
     flex: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+}
+
+.playing-bottom {
+    padding: 1.25rem;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .ring-wrapper {
