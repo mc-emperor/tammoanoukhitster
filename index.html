@@ -32,6 +32,15 @@
         </div>
     </div>
 
+    <!-- Ready -->
+    <div id="screen-ready" class="screen">
+        <div class="center-content">
+            <div class="logo">Hitster</div>
+            <p class="tagline">Open the Spotify app on this phone,<br>play any song, then come back here</p>
+            <button class="btn-spotify" onclick="onStart()">Start scanning</button>
+        </div>
+    </div>
+
     <!-- Scanner -->
     <div id="screen-scanner" class="screen">
         <div id="scanner-container"></div>
@@ -45,10 +54,7 @@
 
     <!-- Playing -->
     <div id="screen-playing" class="screen">
-        <div id="tap-to-start" class="tap-to-start" onclick="onTapToStart()">
-            <div class="tap-hint">Tap to play</div>
-        </div>
-        <div id="playing-controls" class="center-content" style="display:none">
+        <div class="center-content">
             <div class="ring-wrapper">
                 <svg class="countdown-svg" viewBox="0 0 100 100">
                     <circle class="ring-bg" cx="50" cy="50" r="45"/>

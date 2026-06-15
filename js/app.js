@@ -18,8 +18,7 @@ async function init() {
         if (!token) { showScreen('login'); return; }
 
         await initPlayer();
-        await startScanner(onQRDetected);
-        showScreen('scanner');
+        showScreen('ready');
         updateTimerLabel();
     } catch (err) {
         console.error(err);
@@ -27,22 +26,14 @@ async function init() {
     }
 }
 
-let pendingTrackId = null;
-
-async function onQRDetected(trackId) {
-    pendingTrackId = trackId;
-    showScreen('playing');
-    document.getElementById('tap-to-start').style.display = 'flex';
-    document.getElementById('playing-controls').style.display = 'none';
+async function onStart() {
+    await unlockAudio();
+    await startScanner(onQRDetected);
+    showScreen('scanner');
 }
 
-async function onTapToStart() {
-    if (!pendingTrackId) return;
-    const trackId = pendingTrackId;
-    pendingTrackId = null;
-
-    document.getElementById('tap-to-start').style.display = 'none';
-    document.getElementById('playing-controls').style.display = 'flex';
+async function onQRDetected(trackId) {
+    showScreen('playing');
     startCountdown(currentTimer);
 
     try {
